@@ -1,11 +1,13 @@
 package com.nerdysoft.taskmanager.service;
 
-import com.nerdysoft.taskmanager.domain.User;
+import com.nerdysoft.taskmanager.dto.User;
+import com.nerdysoft.taskmanager.dto.Registrant;
 import com.nerdysoft.taskmanager.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.Optional;
 
 @Service
@@ -20,14 +22,15 @@ public class UserRegistrationService implements IUserRegistrationService {
         this.bCryptPasswordEncoder = passwordEncoder;
     }
 
-    public User registerNewUserAccount(User user) /*throws EmailExistsException, UsernameExistsException*/ {
+    public User registerNewUserAccount(Registrant registrant) /*throws EmailExistsException, UsernameExistsException*/ {
 //        if (!isValidUsername(user.getUsername())) throw new EmailExistsException();
 //        if (!isValidUserEmail(user.getEmail())) throw new UsernameExistsException();
 
-        // Make user password safe
-        String userPassword = user.getPassword();
-        user.setPassword(bCryptPasswordEncoder.encode(userPassword));
-
+        User user = new User();
+        user.setUsername(registrant.getUsername());
+        user.setPassword(bCryptPasswordEncoder.encode(registrant.getPassword()));
+        user.setEmail(registrant.getEmail());
+        user.setTasks(new ArrayList<>());
         return userRepository.save(user);
     }
 

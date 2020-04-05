@@ -1,25 +1,21 @@
-package com.nerdysoft.taskmanager.service;
+package com.nerdysoft.taskmanager;
 
-import com.nerdysoft.taskmanager.domain.Task;
-import com.nerdysoft.taskmanager.domain.User;
+import com.nerdysoft.taskmanager.dto.Task;
+import com.nerdysoft.taskmanager.dto.User;
 import com.nerdysoft.taskmanager.repository.TaskRepository;
 import com.nerdysoft.taskmanager.repository.UserRepository;
-import org.bson.types.ObjectId;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.ArrayList;
 
 @Service
 public class DatabaseSeeder implements CommandLineRunner {
 
     private UserRepository userRepository;
     private TaskRepository taskRepository;
-
-
     private PasswordEncoder encoder;
 
     @Inject
@@ -31,28 +27,29 @@ public class DatabaseSeeder implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        ObjectId obId = new ObjectId();
 
+        // drop all data from collections
+        userRepository.deleteAll();
+        taskRepository.deleteAll();
 
+        // create a task
+        Task task = new Task();
+        task.setTitle("Special task number 1");
+        task.setDescription("Lorem ipsum dolor sit amet, consectetur adipiscing elit.");
+        task.setShares(new ArrayList<>());
+        // save task in database
+        task = taskRepository.save(task);
+
+        // create a user
         User user = new User();
         user.setUsername("JohnDean");
         user.setEmail("JohnDean@gmail.com");
         user.setPassword(encoder.encode("1234567"));
-        user.setTaskIds(Collections.singletonList(obId.toString()));
-        //user.setSharedBy(Collections.);
-
-        Task task = new Task();
-        task.setTitle("Special John Dean's task");
-        task.setDescription("Description 1");
-        task.setId(obId);
-
-        // drop all users
-        userRepository.deleteAll();
-
-        // add user to database
+        user.setTasks(new ArrayList<>());
+        // Assign task to user
+        user.getTasks().add(task.getId());
+        // save user in database
         userRepository.save(user);
-
-
 
     }
 }

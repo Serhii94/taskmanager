@@ -19,6 +19,4 @@ public class RestExceptionHandler {
         return new ResponseEntity<>(null, null, HttpStatus.NOT_FOUND);
     }
 
-
-
 }
