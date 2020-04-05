@@ -1,6 +1,6 @@
 package com.nerdysoft.taskmanager.repository;
 
-import com.nerdysoft.taskmanager.dto.User;
+import com.nerdysoft.taskmanager.domain.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 

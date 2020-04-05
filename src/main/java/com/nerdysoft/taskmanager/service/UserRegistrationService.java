@@ -1,6 +1,6 @@
 package com.nerdysoft.taskmanager.service;
 
-import com.nerdysoft.taskmanager.dto.User;
+import com.nerdysoft.taskmanager.domain.User;
 import com.nerdysoft.taskmanager.dto.Registrant;
 import com.nerdysoft.taskmanager.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;

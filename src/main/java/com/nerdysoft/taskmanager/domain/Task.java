@@ -1,4 +1,4 @@
-package com.nerdysoft.taskmanager.dto;
+package com.nerdysoft.taskmanager.domain;
 
 import com.nerdysoft.taskmanager.dto.ShareTaskInfo;
 import lombok.Data;

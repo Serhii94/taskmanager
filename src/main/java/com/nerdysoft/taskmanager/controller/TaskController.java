@@ -1,7 +1,7 @@
 package com.nerdysoft.taskmanager.controller;
 
-import com.nerdysoft.taskmanager.dto.Task;
-import com.nerdysoft.taskmanager.dto.User;
+import com.nerdysoft.taskmanager.domain.Task;
+import com.nerdysoft.taskmanager.domain.User;
 import com.nerdysoft.taskmanager.dto.ShareTaskInfo;
 import com.nerdysoft.taskmanager.exception.ResourceNotFoundException;
 import com.nerdysoft.taskmanager.repository.TaskRepository;
