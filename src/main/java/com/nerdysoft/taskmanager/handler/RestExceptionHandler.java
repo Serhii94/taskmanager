@@ -1,7 +1,6 @@
 package com.nerdysoft.taskmanager.handler;
 
 import com.nerdysoft.taskmanager.exception.InvalidUserEmailException;
-import com.nerdysoft.taskmanager.exception.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
