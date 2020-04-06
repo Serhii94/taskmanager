@@ -74,7 +74,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/tasks/?userId=5e8a273411de0f4cd3355b49",
+					"raw": "http://localhost:8080/tasks/?userId=5e8af7b274df310fe6e6a7de",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -87,7 +87,7 @@
 					"query": [
 						{
 							"key": "userId",
-							"value": "5e8a273411de0f4cd3355b49"
+							"value": "5e8af7b274df310fe6e6a7de"
 						}
 					]
 				}
@@ -100,7 +100,7 @@
 				"method": "PUT",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/tasks/share/:taskId?providerId=5e872bfcd0cba629c7827e81&receiverEmail=user2@gmail.com",
+					"raw": "http://localhost:8080/tasks/share/:taskId?providerId=5e8a273411de0f4cd3355b49&receiverEmail=user2@gmail.com",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -114,7 +114,7 @@
 					"query": [
 						{
 							"key": "providerId",
-							"value": "5e872bfcd0cba629c7827e81"
+							"value": "5e8a273411de0f4cd3355b49"
 						},
 						{
 							"key": "receiverEmail",
@@ -124,7 +124,7 @@
 					"variable": [
 						{
 							"key": "taskId",
-							"value": "5e872be0d0cba629c7827e7f"
+							"value": "5e8a273411de0f4cd3355b48"
 						}
 					]
 				}
@@ -139,12 +139,12 @@
 					"basic": [
 						{
 							"key": "password",
-							"value": "1234567",
+							"value": "admin",
 							"type": "string"
 						},
 						{
 							"key": "username",
-							"value": "user1",
+							"value": "admin",
 							"type": "string"
 						}
 					]
@@ -168,6 +168,21 @@
 		{
 			"name": "get all tasks",
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
