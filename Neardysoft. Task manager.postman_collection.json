@@ -241,6 +241,56 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "update task",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "1234567",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "JohnDean",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n\t\"title\":\"Special task number 2\",\n\t\"description\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\",\n\t\"shares\": []\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/tasks/:taskId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tasks",
+						":taskId"
+					],
+					"variable": [
+						{
+							"key": "taskId",
+							"value": "5e8b0056bcc3ab1d8a6a911a"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"auth": {
