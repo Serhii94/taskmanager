@@ -22,8 +22,8 @@ import java.util.List;
 @RestController
 public class TaskController {
 
-    private TaskRepository taskRepository;
-    private UserRepository userRepository;
+    private final TaskRepository taskRepository;
+    private final UserRepository userRepository;
 
     @Inject
     public TaskController(TaskRepository taskRepository, UserRepository userRepository) {
