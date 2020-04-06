@@ -22,29 +22,31 @@ public class UserRegistrationService implements IUserRegistrationService {
         this.bCryptPasswordEncoder = passwordEncoder;
     }
 
-    public User registerNewUserAccount(Registrant registrant) /*throws EmailExistsException, UsernameExistsException*/ {
-//        if (!isValidUsername(user.getUsername())) throw new EmailExistsException();
-//        if (!isValidUserEmail(user.getEmail())) throw new UsernameExistsException();
+    public User registerNewUserAccount(Registrant registrant) {
+        User user = null;
 
-        User user = new User();
-        user.setUsername(registrant.getUsername());
-        user.setPassword(bCryptPasswordEncoder.encode(registrant.getPassword()));
-        user.setEmail(registrant.getEmail());
-        user.setTasks(new ArrayList<>());
+        //TODO This is a temporary implementation. It must be reworked.
+        if (isValidUsername(registrant.getUsername()) && isValidUserEmail(registrant.getEmail())) {
+            user = new User();
+            user.setUsername(registrant.getUsername());
+            user.setPassword(bCryptPasswordEncoder.encode(registrant.getPassword()));
+            user.setEmail(registrant.getEmail());
+            user.setTasks(new ArrayList<>());
+        }
         return userRepository.save(user);
     }
 
     private boolean isValidUsername(String username) {
-        Optional<User> container = userRepository.findByUsername(username);
-        if (container.isPresent()) {
+        Optional<User> user = userRepository.findByUsername(username);
+        if (user.isPresent()) {
             return false;
         }
         return true;
     }
 
     private boolean isValidUserEmail(String email) {
-        Optional<User> container = userRepository.findByEmail(email);
-        if (container.isPresent()) {
+        Optional<User> user = userRepository.findByEmail(email);
+        if (user.isPresent()) {
             return false;
         }
         return true;
