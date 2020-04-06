@@ -46,10 +46,21 @@ public class DatabaseSeeder implements CommandLineRunner {
         user.setEmail("JohnDean@gmail.com");
         user.setPassword(encoder.encode("1234567"));
         user.setTasks(new ArrayList<>());
+        user.setAdmin(false);
         // Assign task to user
         user.getTasks().add(task.getId());
         // save user in database
         userRepository.save(user);
+
+        // create an admin
+        User admin = new User();
+        admin.setUsername("admin");
+        admin.setEmail("admin@gmail.com");
+        admin.setPassword(encoder.encode("admin"));
+        admin.setAdmin(true);
+        admin.setTasks(new ArrayList<>());
+        // save admin in database
+        userRepository.save(admin);
 
     }
 }

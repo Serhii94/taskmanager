@@ -26,7 +26,13 @@ public class MongoUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) {
         User user = null;
         user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
-        List<SimpleGrantedAuthority> authorities = Arrays.asList(new SimpleGrantedAuthority("user"));
+        List<SimpleGrantedAuthority> authorities = null;
+        if (user.isAdmin()) {
+            authorities = Arrays.asList(new SimpleGrantedAuthority("admin"));
+        }
+        if (!user.isAdmin()) {
+            authorities = Arrays.asList(new SimpleGrantedAuthority("user"));
+        }
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), authorities);
     }
 
