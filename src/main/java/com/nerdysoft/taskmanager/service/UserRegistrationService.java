@@ -16,12 +16,12 @@ import java.util.Optional;
 public class UserRegistrationService implements IUserRegistrationService {
 
     private final UserRepository userRepository;
-    private final PasswordEncoder bCryptPasswordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     @Inject
     public UserRegistrationService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
-        this.bCryptPasswordEncoder = passwordEncoder;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public User registerNewUserAccount(Registrant registrant) {
@@ -46,7 +46,7 @@ public class UserRegistrationService implements IUserRegistrationService {
     private User registrantToUser(Registrant registrant) {
         User user = new User();
         user.setUsername(registrant.getUsername());
-        user.setPassword(bCryptPasswordEncoder.encode(registrant.getPassword()));
+        user.setPassword(passwordEncoder.encode(registrant.getPassword()));
         user.setEmail(registrant.getEmail());
         user.setTasks(new ArrayList<>());
         return user;
