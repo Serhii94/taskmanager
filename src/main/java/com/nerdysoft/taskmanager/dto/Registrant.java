@@ -2,22 +2,19 @@ package com.nerdysoft.taskmanager.dto;
 
 import lombok.Data;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 
 @Data
 public class Registrant {
-    @NotNull
-    @NotEmpty
+
+    @NotBlank(message = "Username is mandatory")
+    @Size(min = 3, max = 15)
     private String username;
 
-    @NotNull
-    @NotEmpty
-    @Email
+    @Email()
     private String email;
 
-    @NotNull
-    @NotEmpty
+    @NotBlank(message = "Password is mandatory")
+    @Size(min = 6, max = 15)
     private String password;
 }
